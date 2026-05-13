@@ -859,6 +859,53 @@ body,
   background: transparent !important;
 }
 
+/* ==== Make math blocks inherit the code-fence surface ==== */
+#write .md-math-block:hover .md-math-container,
+#write .md-math-block:hover .md-rawblock-tooltip,
+#write .md-rawblock-on-edit:hover .md-rawblock-tooltip,
+#write .md-rawblock-on-edit .md-mathblock-panel,
+#write .md-math-block .md-mathblock-panel,
+#write .md-math-block .code-tooltip,
+#write .mathjax-block > .code-tooltip,
+#write .md-mathjax-midline {
+  background: var(--bg-panel) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+#write .md-math-block .md-rawblock-tooltip,
+#write .md-rawblock-on-edit .md-rawblock-tooltip,
+#write .md-math-block .md-mathjax-preview {
+  background: var(--bg-panel) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+#write .md-math-block .md-rawblock-before,
+#write .md-math-block .md-rawblock-after,
+#write .md-math-block .md-mathblock-input {
+  background: rgba(242, 239, 223, 0.9) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+#write .md-math-block .CodeMirror,
+#write .md-math-block .CodeMirror-gutters,
+#write .md-math-block .CodeMirror-lines,
+#write .md-math-block .CodeMirror-code,
+#write .md-math-block .CodeMirror-line,
+#write .md-math-block pre.CodeMirror-line {
+  background: transparent !important;
+  color: var(--text) !important;
+}
+
+#write .md-math-block .MathJax_SVG,
+#write .md-math-block .MathJax_SVG_Display,
+#write .md-math-block svg {
+  color: var(--text) !important;
+  background: transparent !important;
+}
+
 /* ==== UI Elements Outside Writing Area (Light Theme) ==== */
 /* Fix for settings dialog and other UI components */
 :not(#write *):not(.CodeMirror):not(.CodeMirror *) {
@@ -945,4 +992,13 @@ button:not(#write *),
 .cm-editor .cm-selectionBackground,
 .cm-editor.cm-focused .cm-selectionBackground {
   background: transparent !important;
+}
+
+/* ==== Fix CodeMirror line highlighting ==== */
+#write .CodeMirror-activeline-background,
+#write .CodeMirror-linebackground,
+#write pre.CodeMirror-line .CodeMirror-linebackground,
+#write .CodeMirror-code .CodeMirror-activeline,
+#write .CodeMirror-activeline .CodeMirror-linebackground {
+  background: var(--bg-muted) !important;
 }
