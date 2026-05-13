@@ -41,6 +41,9 @@
   --accent: var(--ef-green);
   --accent-2: var(--ef-blue);
   --selection: #e0e6c9;
+  --source-selection: rgba(141, 161, 1, 0.24);
+  --select-text-bg-color: var(--selection);
+  --select-text-font-color: var(--text);
 
   /* Typora UI Variables */
   --bg-color: var(--bg);
@@ -114,7 +117,13 @@ body,
 }
 
 ::selection {
-  background: var(--selection);
+  background: var(--select-text-bg-color);
+  color: var(--select-text-font-color);
+}
+
+pre {
+  --select-text-bg-color: var(--source-selection);
+  --select-text-font-color: var(--text);
 }
 
 /* Scrollbar */
@@ -852,7 +861,7 @@ body,
 
 /* ==== UI Elements Outside Writing Area (Light Theme) ==== */
 /* Fix for settings dialog and other UI components */
-:not(#write *) {
+:not(#write *):not(.CodeMirror):not(.CodeMirror *) {
   background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
@@ -870,7 +879,7 @@ input:not(#write *),
 select:not(#write *),
 button:not(#write *),
 label:not(#write *),
-span:not(#write *) {
+span:not(#write *):not(.CodeMirror *) {
   background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
@@ -922,4 +931,18 @@ button:not(#write *),
   background-color: var(--bg-panel) !important;
   color: var(--text-color) !important;
   border-top: 1px solid var(--border) !important;
+}
+
+/* ==== Source Mode selection ==== */
+.CodeMirror-selected,
+#write .CodeMirror-selected,
+#typora-source .CodeMirror-selected,
+.CodeMirror-focused .CodeMirror-selected,
+#write .CodeMirror-focused .CodeMirror-selected,
+#typora-source .CodeMirror-focused .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selected,
+.cm-s-typora-default .CodeMirror-selected,
+.cm-editor .cm-selectionBackground,
+.cm-editor.cm-focused .cm-selectionBackground {
+  background: transparent !important;
 }
